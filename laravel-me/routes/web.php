@@ -14,5 +14,10 @@ route::resource('web', HomeWeb::class);
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',
+        data:[
+            'title' => 'Home Laravel',
+            'nama' => 'orang sunda',
+            'kelas' => 'XI RPL'
+        ]);
 });

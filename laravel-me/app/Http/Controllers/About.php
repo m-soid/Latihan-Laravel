@@ -11,7 +11,29 @@ class About extends Controller
      */
     public function index()
     {
-        return view('about');
+        $siswas = [
+            ['nama' => 'Hadi', 'kelas' => ' XI RPL'],
+            ['nama' => 'aoddi ', 'kelas' => ' XI RPL'],
+            ['nama' => 'faiz', 'kelas' => ' XI RPL'],
+            ['nama' => 'bima ', 'kelas' => ' XI RPL'],
+            ['nama' => 'bimsen ', 'kelas' => ' XI RPL'],
+            ['nama' => 'rapka ', 'kelas' => ' XI RPL'],
+            ['nama' => 'aliy ', 'kelas' => ' XI RPL'],
+            ['nama' => 'radit mahendar ', 'kelas' => ' XI RPL'],
+            ['nama' => 'glenn ', 'kelas' => ' XI RPL'],
+            ['nama' => 'radit rizki ', 'kelas' => ' XI RPL'],
+            ['nama' => 'yusuf ', 'kelas' => ' XI RPL'],
+            ['nama' => 'rangga ', 'kelas' => ' XI RPL'],
+            ['nama' => 'devan ', 'kelas' => ' XI RPL'],
+            ['nama' => 'ghani ', 'kelas' => ' XI RPL'],
+            ['nama' => 'azzaam ', 'kelas' => ' XI RPL'],
+            ['nama' => 'aksa ', 'kelas' => ' XI RPL'],
+            ['nama' => 'sattar ', 'kelas' => ' XI RPL'],
+        ];
+        return view(
+            'about',
+            compact('siswas')
+    );
     }
 
     /**

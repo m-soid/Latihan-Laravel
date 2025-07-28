@@ -29,5 +29,24 @@
   </div>
 </header>
     <h1>ini halaman about</h1>
+
+    <table border=1>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>kelas</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        @foreach($siswas as $murid)
+        <tr>
+          <th> {{ $murid ['nama'] }} </th>
+          <th> {{ $murid ['kelas'] }} </th>
+        </tr>
+      </tbody>
+      @endforeach
+    </table>
+
 </body>
 </html>
