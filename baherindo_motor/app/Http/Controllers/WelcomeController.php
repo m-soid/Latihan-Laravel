@@ -12,11 +12,15 @@ class WelcomeController extends Controller
     public function index()
     {
         $motor = [
-            ['id' => 1 , 'name' => 'motor yamaha', 'price' => 100000],
-            ['id' => 2 , 'name' => 'motor honda', 'price' => 150000],
-            ['id' => 3 , 'name' => 'motor suzuki', 'price' => 120000],
-            ['id' => 4 , 'name' => 'motor kawasaki', 'price' => 100000],
-            ['id' => 5 , 'name' => 'motor ducati', 'price' => 250000],
+            ['id' => 1 , 'nama' => 'motor yamaha', 'price' => 100000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 2 , 'nama' => 'motor honda', 'price' => 150000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 3 , 'nama' => 'motor suzuki', 'price' => 120000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 4 , 'nama' => 'motor kawasaki', 'price' => 100000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 5 , 'nama' => 'motor ducati', 'price' => 250000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 1 , 'nama' => 'motor yamaha', 'price' => 100000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 2 , 'nama' => 'motor honda', 'price' => 150000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 3 , 'nama' => 'motor suzuki', 'price' => 120000, 'tahun' => 2008, 'jarak' => 200],
+            ['id' => 5 , 'nama' => 'motor ducati', 'price' => 250000, 'tahun' => 2008, 'jarak' => 200],
         ];
 
         return view('welcome', compact('motor'));

@@ -1,25 +1,11 @@
 <style>
-    footer {
-        background-color: lightgray;
-        color: black;
-        text-align: center;
-        padding: 10px 0;
-        position: fixed;
+    footer{
         width: 100%;
         bottom: 0;
     }
-    footer p {
-        margin: 0;
-    }
-    footer a {
-        color: black;
-        text-decoration: none;
-    }
-    footer a:hover {
-        text-decoration: underline;
-    }
 </style>
 
-<footer>
+
+<footer class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 text-white p-3 text-center fixed ">
     &copy; 2025 Rais Bima Prayata
 </footer>
