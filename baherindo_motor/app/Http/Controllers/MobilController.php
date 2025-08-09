@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MotorBaherindo;
+use App\Models\MobilBaherindo;
 use Illuminate\Http\Request;
 
-class WelcomeController extends Controller
+class MobilController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $motor = MotorBaherindo::all();
-        return view('welcome', compact('motor'));
+        $mobil = mobilbaherindo::all();
+        return view('mobil',compact('mobil'));
     }
 
     /**
@@ -21,7 +21,7 @@ class WelcomeController extends Controller
      */
     public function create()
     {
-        //
+        return view("mobil.create");
     }
 
     /**
@@ -29,7 +29,22 @@ class WelcomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $ValidatedData = $request->validate([
+            'nama_mobil' => 'required|string',
+            'harga_mobil' => 'required|numeric',
+            'km_mobil' => 'required|integer',
+            'tahun_mobil' => 'required|integer',
+            'gambar_mobil' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+
+        if ($request->hasFile('gambar_mobil')) {
+            $path = $request -> file('gambar_mobil')->store('mobil_images', 'public');
+            $ValidatedData['gambar_mobil'] = $path;
+        }
+
+        MobilBaherindo::create($ValidatedData);
+        return redirect('/mobil');
     }
 
     /**

@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\MotorBaherindo;
+use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 
-class WelcomeController extends Controller
+class MotorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $motor = MotorBaherindo::all();
-        return view('welcome', compact('motor'));
+        return view('motor.create');
     }
 
     /**
@@ -29,7 +29,22 @@ class WelcomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $ValidatedData = $request->validate([
+            'nama_motor' => 'required|string',
+            'harga_motor' => 'required|numeric',
+            'km_motor' => 'required|integer',
+            'tahun_motor' => 'required|integer',
+            'gambar_motor' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+
+        if ($request->hasFile('gambar_motor')) {
+            $path = $request -> file('gambar_motor')->store('motor_images', 'public');
+            $ValidatedData['gambar_motor'] = $path;
+        }
+
+        MotorBaherindo::create($ValidatedData);
+        return redirect('/');
     }
 
     /**
