@@ -37,7 +37,8 @@ class MobilHome extends Controller
      */
     public function show(string $id)
     {
-        //
+        $mobil = MobilBaherindo::findOrFail($id);
+        return view('mobil.show', compact('mobil'));
     }
 
     /**
@@ -45,7 +46,8 @@ class MobilHome extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mobil = MobilBaherindo::findOrFail($id);
+        return view('mobil.edit', compact('mobil'));
     }
 
     /**
@@ -53,7 +55,23 @@ class MobilHome extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $mobil = MobilBaherindo::findOrFail($id);
+
+        $ValidatedData = $request->validate([
+            'nama_mobil' => 'required|string',
+            'harga_mobil' => 'required|numeric',
+            'km_mobil' => 'required|integer',
+            'tahun_mobil' => 'required|integer',
+            'gambar_mobil' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+
+        if ($request->hasFile('gambar_mobil')) {
+            $path = $request -> file('gambar_mobil')->store('mobil_images', 'public');
+            $ValidatedData['gambar_mobil'] = $path;
+        }
+
+        MobilBaherindo::create($ValidatedData);
+        return redirect('/mobil');
     }
 
     /**
@@ -61,6 +79,8 @@ class MobilHome extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mobil = MobilBaherindo::findOrFail($id);
+        $mobil->delete();
+        return redirect('/');
     }
 }
